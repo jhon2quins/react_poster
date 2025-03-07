@@ -57,11 +57,11 @@ function Post({ author, body }) {
                         onChange={(e) => setEditedBody(e.target.value)}
                     />
                     <button className='save_button' onClick={handleSave}>Save</button>
-                    <button className='cancel_button' onClick={handleCancel}>Cancelasdsadsad</button>
+                    <button className='cancel_button' onClick={handleCancel}>Cancel</button>
                 </>
             ) : (
                 <>
-				<button className='edit_button' onClick={handleEdit}>Editsos</button>
+				<button className='edit_button' onClick={handleEdit}>Edit</button>
 				<button className='delete_button' onClick={handleDelete}>Delete</button>
 
                     <p className='author'>{editedAuthor}</p>
