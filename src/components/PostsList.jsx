@@ -13,19 +13,19 @@ function PostsList({ isPosting, onStopPosting }) {
 	useEffect(() => {
 		async function fetchPosts() {
 			setLoading(true);
-			const response = await fetch('${BACKEND_URL}/posts');
+			const response = await fetch(`${BACKEND_URL}/posts`); // ✅ FIXED SYNTAX
 			const resData = await response.json();
 			setPosts(resData.posts);
 			setLoading(false);
 		}
-
+	
 		fetchPosts();
 	}, []);
-
+	
 	function addPostHandler(postData) {
 		async function addPost() {
 			setLoading(true);
-			await fetch('${BACKEND_URL}/posts', {
+			await fetch(`${BACKEND_URL}/posts`, { // ✅ FIXED SYNTAX
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -34,10 +34,11 @@ function PostsList({ isPosting, onStopPosting }) {
 			});
 			setLoading(false);
 		}
-
+	
 		addPost();
 		setPosts((existingData) => [postData, ...existingData]);
 	}
+	
 
 	return (
 		<>
