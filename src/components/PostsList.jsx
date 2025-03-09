@@ -4,6 +4,7 @@ import Post from './Post';
 import NewPost from './NewPost';
 import Modal from './Modal';
 import LoadingSpinner from './LoadingSpinner';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 function PostsList({ isPosting, onStopPosting }) {
 	const [posts, setPosts] = useState([]);
@@ -12,7 +13,7 @@ function PostsList({ isPosting, onStopPosting }) {
 	useEffect(() => {
 		async function fetchPosts() {
 			setLoading(true);
-			const response = await fetch('http://localhost:8080/posts');
+			const response = await fetch('${BACKEND_URL}/posts');
 			const resData = await response.json();
 			setPosts(resData.posts);
 			setLoading(false);
@@ -24,7 +25,7 @@ function PostsList({ isPosting, onStopPosting }) {
 	function addPostHandler(postData) {
 		async function addPost() {
 			setLoading(true);
-			await fetch('http://localhost:8080/posts', {
+			await fetch('${BACKEND_URL}/posts', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
